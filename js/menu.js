@@ -1,25 +1,58 @@
-const menuItems = [
-    { label: "Compras", href: "Compras/compras.html" },
-    { label: "Inventario", href: "Inventario/inventario.html" },
-    { label: "Ventas", href: "Ventas/ventas.html" },
-    { label: "CXC", href: "CXC/cxc.html" },
-    { label: "CXP", href: "CXP/cxp.html" },
-    { label: "Bancos", href: "Bancos/bancos.html" },
-    { label: "Contabilidad", href: "Contabilidad/contabilidad.html" },
-    { label: "Presupuesto", href: "Presupuesto/presupuesto.html" },
-    { label: "SAC", href: "SAC/sac.html" },
-    { label: "Logistica", href: "Logistica/logistica.html" },
-    { label: "Proveeduria", href: "Proveeduria/proveeduria.html" },
-    { label: "RRHH", href: "RRHH/rrhh.html" }
-];
-
 const menuLinks = document.querySelector("#menu-links");
 
-menuItems.forEach(({ label, href }) => {
-    const item = document.createElement("li");
-    const link = document.createElement("a");
-    link.href = href;
-    link.textContent = label;
-    item.append(link);
-    menuLinks.append(item);
-});
+async function loadMenu() {
+    // 1. Prevenir errores si el nodo no existe en el HTML
+    if (!menuLinks) {
+        console.error("El contenedor #menu-links no existe en el DOM.");
+        return;
+    }
+
+    try {
+        const params = new URLSearchParams({
+            tipo: "0",
+            usuario: "",
+            rol: ""
+        });
+        const response = await fetch(`http://localhost:5000/api/menu?${params.toString()}`);
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+        }
+
+        const menuItems = await response.json();
+        if (!Array.isArray(menuItems)) {
+            throw new Error("La respuesta de la API no es un arreglo");
+        }
+
+        // Limpiar el contenedor antes de insertar los ítems
+        menuLinks.textContent = "";
+
+        // Fragmento en memoria para evitar múltiples renderizados
+        const fragment = document.createDocumentFragment();
+
+        menuItems.forEach(({ nombre, url }) => {
+            if (!nombre || !url) return;
+
+            const item = document.createElement("li");
+            const link = document.createElement("a");
+            link.href = url;
+            link.textContent = nombre;
+
+            item.append(link);
+            fragment.append(item);
+        });
+
+        // Insertar todos los ítems en una sola operación
+        menuLinks.append(fragment);
+
+    } catch (error) {
+        // console.error("No se pudo cargar el menú:", error);
+        console.error(error.message, error);
+        menuLinks.textContent = ""; // Limpiar antes de mostrar el mensaje de error
+        const item = document.createElement("li");
+        // item.textContent = "No se pudo cargar el menú";
+        item.textContent = error.message || "No se pudo cargar el menú";
+        menuLinks.append(item);
+    }
+}
+
+loadMenu();
