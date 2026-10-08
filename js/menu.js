@@ -3,8 +3,7 @@ const menuLinks = document.querySelector("#menu-links");
 async function fetchMenu(tipo) {
     const params = new URLSearchParams({
         tipo: String(tipo),
-        usuario: "",
-        rol: ""
+        rol: 29
     });
 
     const response = await fetch(`http://localhost:5000/api/menu?${params.toString()}`);
