@@ -1,0 +1,283 @@
+.quotation-page {
+    width: min(100% - 32px, 1600px);
+    margin: 24px auto 40px;
+}
+
+.page-heading,
+.panel-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.page-heading {
+    margin-bottom: 18px;
+}
+
+.page-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.page-heading h1,
+.panel-heading h2,
+.document-editor-placeholder h2 {
+    margin: 0;
+}
+
+.page-heading p,
+.panel-heading p,
+.document-editor-placeholder p {
+    margin: 4px 0 0;
+    color: #61766d;
+    font-size: 0.85rem;
+}
+
+.button {
+    min-height: 34px;
+    padding: 7px 12px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font: inherit;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.button-primary {
+    background: #d55237;
+    color: #fffefa;
+}
+
+.button-primary:hover {
+    background: #bd452e;
+}
+
+.button-new {
+    display: inline-flex;
+    min-height: 42px;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 11px 5px 6px;
+    border-color: #cbd9ce;
+    background: #fffefa;
+    color: #36564e;
+}
+
+.button-new img {
+    display: block;
+    width: 32px;
+    height: 32px;
+}
+
+.button-new:hover {
+    border-color: #d55237;
+    color: #d55237;
+}
+
+.button:focus-visible,
+.search-field input:focus-visible {
+    outline: 2px solid #d55237;
+    outline-offset: 2px;
+}
+
+.button:disabled {
+    cursor: wait;
+    opacity: 0.7;
+}
+
+.quotation-panel,
+.document-editor-placeholder {
+    border: 1px solid #dce5de;
+    border-radius: 9px;
+    background: #fffefa;
+    box-shadow: 0 3px 12px rgb(24 59 53 / 5%);
+}
+
+.quotation-panel {
+    overflow: hidden;
+}
+
+.panel-heading {
+    padding: 14px 16px;
+    border-bottom: 1px solid #e6ece7;
+}
+
+.panel-heading h2,
+.document-editor-placeholder h2 {
+    font-size: 1rem;
+}
+
+.quotation-count {
+    min-height: 1em;
+}
+
+.panel-heading .quotation-total {
+    color: #183b35;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.search-field {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #48645a;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.search-field input {
+    width: min(300px, 35vw);
+    min-height: 34px;
+    padding: 6px 9px;
+    border: 1px solid #d5e0d7;
+    border-radius: 6px;
+    background: #fff;
+    color: #183b35;
+    font: inherit;
+    font-weight: 400;
+}
+
+.quotation-message {
+    display: none;
+    margin: 0;
+    padding: 12px 16px;
+    color: #48645a;
+    font-size: 0.85rem;
+}
+
+.quotation-message.is-visible {
+    display: block;
+}
+
+.quotation-message.is-error {
+    color: #a83327;
+}
+
+.table-scroll {
+    overflow: auto;
+    max-height: min(66vh, 680px);
+}
+
+.quotation-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.78rem;
+    white-space: nowrap;
+}
+
+.quotation-table th,
+.quotation-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #edf1ed;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.quotation-table .actions-heading,
+.quotation-table .row-actions {
+    position: sticky;
+    left: 0;
+}
+
+.quotation-table .actions-heading {
+    z-index: 2;
+    background: #f3f6f2;
+}
+
+.quotation-table .row-actions {
+    z-index: 1;
+    background: #fffefa;
+}
+
+.row-action-buttons {
+    display: flex;
+    gap: 3px;
+}
+
+.icon-button {
+    display: inline-grid;
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+    place-items: center;
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.icon-button:hover,
+.icon-button:focus-visible {
+    border-color: #dce5de;
+    background: #f3f6f2;
+}
+
+.icon-button:focus-visible {
+    outline: 2px solid #d55237;
+    outline-offset: 1px;
+}
+
+.icon-button img {
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+
+.quotation-table th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: #f3f6f2;
+    color: #36564e;
+    font-weight: 700;
+}
+
+.quotation-table tbody tr:hover {
+    background: #f8faf7;
+}
+
+.quotation-table .numeric-cell {
+    text-align: right;
+}
+
+.quotation-table td.numeric-cell {
+    font-variant-numeric: tabular-nums;
+}
+
+.document-editor-placeholder {
+    min-height: 132px;
+    margin-top: 16px;
+    padding: 18px 16px;
+    border-style: dashed;
+}
+
+@media (max-width: 640px) {
+    .quotation-page {
+        width: min(100% - 20px, 1600px);
+        margin-top: 18px;
+    }
+
+    .page-heading,
+    .panel-heading {
+        align-items: flex-start;
+    }
+
+    .panel-heading {
+        flex-direction: column;
+    }
+
+    .search-field {
+        width: 100%;
+    }
+
+    .search-field input {
+        flex: 1;
+        width: auto;
+        min-width: 0;
+    }
+}

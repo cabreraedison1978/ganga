@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cotización</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/cotizacion.css" />
+    <script src="../js/menu.js" defer></script>
+    <script src="../js/cotizacion.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <nav class="menu" aria-label="Navegación principal">
+        <a class="brand" href="#inicio">GANGA</a>
+        <ul class="menu-links" id="menu-links"></ul>
+      </nav>
+    </header>
+    <main class="quotation-page">
+      <div class="page-heading">
+        <div>
+          <h1>Cotizaciones</h1>
+          <p>Consulta y administra los documentos de venta.</p>
+        </div>
+        <div class="page-actions">
+          <button class="button button-new" id="new-quotation" type="button">
+            <img src="../images/32X32/nuevo.png" alt="" />
+            <span>Nuevo</span>
+          </button>
+          <button
+            class="button button-primary"
+            id="refresh-quotations"
+            type="button"
+          >
+            Actualizar
+          </button>
+        </div>
+      </div>
+
+      <section class="quotation-panel" aria-labelledby="quotation-list-heading">
+        <div class="panel-heading">
+          <div>
+            <h2 id="quotation-list-heading">Documentos</h2>
+            <p id="quotation-count" class="quotation-count">
+              Cargando cotizaciones…
+            </p>
+            <p id="quotation-total" class="quotation-total">Total: —</p>
+          </div>
+          <label class="search-field">
+            <span>Buscar</span>
+            <input
+              id="quotation-search"
+              type="search"
+              placeholder="Cliente o número"
+              autocomplete="off"
+            />
+          </label>
+        </div>
+
+        <p
+          id="quotation-message"
+          class="quotation-message"
+          role="status"
+          aria-live="polite"
+        >
+          Cargando cotizaciones…
+        </p>
+
+        <div class="table-scroll">
+          <table class="quotation-table">
+            <thead>
+              <tr>
+                <th scope="col" class="actions-heading">Acciones</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Canal</th>
+                <th scope="col">Número</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Región</th>
+                <th scope="col">División</th>
+                <th scope="col">Sucursal</th>
+                <th scope="col">Plazo</th>
+                <th scope="col">Identificación</th>
+                <th scope="col">Cliente</th>
+                <th scope="col" class="numeric-cell">Total</th>
+              </tr>
+            </thead>
+            <tbody id="quotation-rows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section
+        class="document-editor-placeholder"
+        aria-labelledby="document-editor-heading"
+      >
+        <div>
+          <h2 id="document-editor-heading">Edición de documento</h2>
+          <p>Espacio reservado para incorporar la edición de cotizaciones.</p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

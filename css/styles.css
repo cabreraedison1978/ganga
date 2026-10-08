@@ -44,37 +44,90 @@ body {
     display: flex;
     flex: 1 1 auto;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+    flex-wrap: wrap;
     gap: 12px;
     min-width: 0;
     margin: 0;
     padding: 0;
-    overflow-x: auto;
     list-style: none;
-    scrollbar-width: none;
 }
 
-.menu-links::-webkit-scrollbar {
-    display: none;
+.menu-links li {
+    position: relative;
 }
 
-.menu-links a {
+.menu-links a,
+.menu-links summary,
+.menu-label {
     display: block;
-    padding: 8px 2px;
+    padding: 7px 10px;
+    border: 1px solid #e3ebe4;
+    border-radius: 6px;
+    background: #f3f6f2;
     color: #36564e;
     font-size: 0.8rem;
     font-weight: 600;
     text-decoration: none;
     white-space: nowrap;
-    transition: color 150ms ease;
+    transition: color 150ms ease, background-color 150ms ease, border-color 150ms ease;
+}
+
+.menu-links summary {
+    cursor: pointer;
+    list-style: none;
+}
+
+.menu-links summary::-webkit-details-marker {
+    display: none;
+}
+
+.menu-links summary::after {
+    display: inline-block;
+    margin-left: 8px;
+    content: "\25BE";
 }
 
 .menu-links a:hover,
-.menu-links a:focus-visible {
+.menu-links a:focus-visible,
+.menu-links details[open] > summary,
+.menu-links summary:hover,
+.menu-links summary:focus-visible {
+    border-color: #cbd9ce;
+    background: #e8efe9;
     color: #d55237;
 }
 
+.menu-submenu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    z-index: 11;
+    display: flex;
+    min-width: 100%;
+    flex-direction: column;
+    gap: 6px;
+    margin: 0;
+    padding: 8px;
+    border: 1px solid #dce5de;
+    border-radius: 8px;
+    background: #fffefa;
+    box-shadow: 0 6px 18px rgb(24 59 53 / 12%);
+    list-style: none;
+}
+
+.menu-links details:not([open]) > .menu-submenu {
+    display: none;
+}
+
+.menu-submenu a,
+.menu-submenu summary,
+.menu-submenu .menu-label {
+    width: 100%;
+}
+
 .menu-links a:focus-visible,
+.menu-links summary:focus-visible,
 .brand:focus-visible {
     outline: 2px solid #d55237;
     outline-offset: 4px;
@@ -88,7 +141,13 @@ body {
     }
 
     .menu-links {
-        justify-content: flex-start;
-        gap: 14px;
+        gap: 10px;
+    }
+
+    .menu-submenu {
+        position: static;
+        min-width: 100%;
+        margin-top: 4px;
+        box-shadow: none;
     }
 }
